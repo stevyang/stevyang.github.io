@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>stevyang blog</title>
+  <meta name="author" content="stevyang">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="stevyang blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="stevyang blog" type="application/atom+xml">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="/css/style.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-368771XX-X']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+<body>
+  <header id="header" class='normal_mode'>
+    <nav id="main-nav">
+  <ul class='container'>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+  </header>
+  <div id="content" class="container">
+    <div id="cover">
+	<div id="profile" alt="http://img3a.hualvtu.com/255607/20130815/2154525190743b7d7582.jpg">
+		<a href="/">
+			<div class="logo">
+				<img src="/logo.png" alt="Profile Picture">
+			</div>
+			<div id="title">stevyang blog</div>
+		</a>
+
+		
+		 <ul class="my-socials">
+  
+  <li>
+  	<a href="https://github.com/stevyang" class="github" target="_blank">
+  		<i class="fa fa-github"></i>
+  	</a>
+  </li>
+  
+  <li>
+  	<a href="yangyang566566@gmail.com" class="mailto" target="_blank">
+  		<i class="fa fa-mailto"></i>
+  	</a>
+  </li>
+  
+ 
+</ul>
+	</div>
+</div>
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+      <time datetime="2016-04-23T08:52:12.000Z"><a href="/2016/04/23/组件化几种方案/">Sat, Apr 23 2016, 4:52:12 pm</a></time>
+
+  
+    <h1 class="title"><a href="/2016/04/23/组件化几种方案/"></a></h1>
+  
+
+
+
+<div class="clear"></div>
+      
+    </header>
+    <div class="entry">
+      
+        <h3 id="目前-组件几种方案："><a href="#目前-组件几种方案：" class="headerlink" title="目前 组件几种方案："></a>目前 组件几种方案：</h3><p>   设计的原则：遵守各自领域的规范，充分利用各自领域的资源来做符合各自领域的设计 不同语言的特性都不一样，不能去刻意追求统一，应该尊重各自领域的规范，设计出最符合当前领域的架构方案。<br>  android和ios 的组件设计方式会有所区别，三种方式会并存，只是侧重点不一样。</p>
+<p> 组件方案三种：</p>
+<ul>
+<li><p>1、分类设计的原则 Target Action机制 （runtime）</p>
+<p>根据之前设计的分类的原则另外加上了Target Action机制 限制了接口的暴露了，为后期维护提供条件，<br>非侵入式设计，一个组件完全可以同时具备mediator和protocol。可以先小范围应用，然后逐步扩大应用范围直至淘汰protocol。<br>各个模块提供了每个模块可以hook的函数</p>
+<p><mark>此方案适用于ios</mark></p>
+</li>
+<li><p>2、ModuleProtocol机制 context 上下文的管理机制</p>
+<p> <mark>此方案适用于android </mark></p>
+</li>
+<li><p>3、 URL Router （面向协议调用）</p>
+<p>以往的模块之间的调用都是端对端之间调用：<br>此方案可以用于大模块间的调用 通过url 映射进行控制传参和调用方法</p>
+<ul>
+<li>android 参考 <a href="https://github.com/clayallsopp/routable-android" target="_blank" rel="external">https://github.com/clayallsopp/routable-android</a> </li>
+<li><p>ios 参考：</p>
+<ul>
+<li><p><a href="https://github.com/clayallsopp/routable-ios" target="_blank" rel="external">https://github.com/clayallsopp/routable-ios</a></p>
+</li>
+<li><p><a href="https://github.com/joeldev/JLRoutes" target="_blank" rel="external">https://github.com/joeldev/JLRoutes</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><mark>通用 </mark></p>
+<h4 id="1、组件的注册："><a href="#1、组件的注册：" class="headerlink" title="1、组件的注册："></a>1、组件的注册：</h4></li>
+</ul>
+<ul>
+<li>依赖注入（控制反转）机制<br>借鉴spring service的原理 实现组件的依赖的注入 service的注册，这里service 可以理解成对外提供的接口服务。</li>
+</ul>
+<ul>
+<li>参考 spring service 注册依赖的机制<ul>
+<li>静态注册 原则：主要注册固定大的模块而且通用的。</li>
+<li>动态注册 原则：需要的时候注册的模块 不是频繁调用的组件。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>根据页面的逻辑需要对组件进行管理生命周期：什么时候注册 什么时候卸载， 用来减少对内存的消耗。</p>
+<ul>
+<li>ios module 注册可以采用load系统方法的调用进行引用注册机制</li>
+</ul>
+</li>
+</ul>
+<h4 id="3、组件间的调用"><a href="#3、组件间的调用" class="headerlink" title="3、组件间的调用"></a>3、组件间的调用</h4><p>####ios:</p>
+<ul>
+<li><p>可以采用分类（对一个类的扩展）的机制结合Target Action机制 （runtime）</p>
+<p>注：Target 可以理解成一个接口提供的方法类型 （action可以理解方法）</p>
+<ul>
+<li>通过target 限制分类action暴漏的接口 以target-action 为区别 分为：</li>
+</ul>
+<ul>
+<li>初始数据的 处理页面返回</li>
+<li>处理跳转</li>
+<li>处理事件传递和ui</li>
+</ul>
+</li>
+</ul>
+<h4 id="android"><a href="#android" class="headerlink" title="android"></a>android</h4><ul>
+<li><p>通过 protocol 来实现 ：ServiceProtocol暴露模块对外访问的接口</p>
+</li>
+<li><p>可以通过统一的Context上下文进行事件转发</p>
+<p>上下文存储了组件的所有属性及对象信息用于控制组件间的通讯及调用，但是这里付出了内存的代价，需要对上下文进行管理减少内存大小 （ 加载 卸载）</p>
+<ul>
+<li>组件注册：</li>
+</ul>
+</li>
+<li><p>静态注册 原则：主要注册固定大的模块而且通用的。</p>
+<p>提前加载本地的xml配置文件 这里分为组件xml service的xml</p>
+<p>组件注册格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">&lt;key&gt;ModuleClass&lt;/key&gt; //组件提供的service</span><br><span class="line">&lt;array&gt;</span><br><span class="line">&lt;string&gt;BHImageSelector&lt;/string&gt; //组件calss</span><br><span class="line">&lt;string&gt;...&lt;/string&gt; //组件calss</span><br><span class="line">&lt;/array&gt; </span><br><span class="line">&lt;/dict&gt;</span><br></pre></td></tr></table></figure>
+<p>service注册格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;dict&gt;</span><br><span class="line">&lt;key&gt;ImageSelectorProtocol&lt;/key&gt; //组件提供的service</span><br><span class="line">&lt;string&gt;BHImageSelector&lt;/string&gt; //组件calss</span><br><span class="line">&lt;/dict&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>动态注册 原则：需要的时候注册的模块 不是频繁调用的组件。<br>1、 createService<br>2、 createModule</p>
+</li>
+</ul>
+<h4 id="协议定义的标准："><a href="#协议定义的标准：" class="headerlink" title="协议定义的标准："></a>协议定义的标准：</h4><ul>
+<li>1、对外接口规范</li>
+<li>2、对外接口编译时检查发现接口的变更，从而及时修正接口问题。 这个就要强依赖接口定义的文件</li>
+<li>3、兼容目前的模块间的调用</li>
+<li>4、能够分清框架级的改动还是组件级的改动。避免发布的风险</li>
+<li>5、开发规范的约定</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        <div class="alignleft">
+            <a href="/2016/04/23/组件化几种方案/#more" class="more-link"><i class="fa fa-chevron-right"></i>Read More</a>
+        </div>
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<h2>页面建设中...</h2>
+
+<nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+
+<script src="/js/jquery.anystretch.min.js"></script>
+<script src="/js/cover.js"></script>
+
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div>
+  
+  &copy; 2016 stevyang
+  
+</div>
+Powered by <a href="http://zespia.tw/hexo/" title="Hexo" target="_blank" rel="external">Hexo</a> and <a href="http://pages.github.com/" title="GitHub Pages" target="_blank" rel="external">GitHub Pages</a>
+
+<div class="clearfix"></div></footer>
+  
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        (function(){
+
+            $(window).scroll(function(){
+
+                var scrollTop = $(window).scrollTop();
+                if ( scrollTop >200 ){
+                    $("#main-nav").removeClass('normal_mode').addClass('top_mode');
+                } else{
+                    $("#main-nav").removeClass('top_mode').addClass('normal_mode');
+                }
+
+            });
+
+        })();
+    </script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript">
+  (function($){
+    $('.fancybox').fancybox({
+      'titlePosition': 'inside'
+    });
+  })(jQuery);
+  </script>
+
+
+
+
+<script type="text/javascript">
+  
+  $(function(){
+
+    $('.title').hover(
+      function() {      
+        $(this).stop().animate(
+          {'marginLeft': '10px'}, 200
+        );   
+      }, 
+      function() {       
+        $(this).stop().animate({'marginLeft': '0px'}, 200);      
+      
+    });   
+
+  });
+
+</script>
+
+
+</body>
+</html>
